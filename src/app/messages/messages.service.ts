@@ -6,15 +6,18 @@ import {filter} from 'rxjs/operators';
 @Injectable()
 export class MessagesService {
 
-    private subject = new BehaviorSubject<string[]>([]);
 
-    errors$: Observable<string[]> = this.subject.asObservable()
-        .pipe(
-            filter(messages => messages && messages.length > 0)
-        );
+  private subject = new BehaviorSubject<string[]>([]);
 
-    showErrors(...errors: string[]) {
-        this.subject.next(errors);
-    }
+  errors$: Observable<string[]> = this.subject.asObservable()
+    .pipe(
+      filter(messages => messages && messages.length > 0)
+    )
+
+
+
+  showErrors(...errors: string[]) {
+    this.subject.next(errors);
+  }
 
 }
